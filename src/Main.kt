@@ -8,6 +8,9 @@ fun main() {
     day05.main()
     day06.main()
     day07.main()
+    day08.main()
+    day09.main()
+    day10.main()
 
     println("\nTime taken: ${String.format("%.6f", (System.nanoTime()-startTime)/1_000_000_000f)} seconds")
 }
