@@ -4,9 +4,9 @@ import java.io.File
 
 const val FILENAME = "src/day11/Input.txt"
 
-fun map(): Array<Array<Char>> {
+fun map(): Array<CharArray> {
     val strings = File(FILENAME).readLines()
-    val map = Array<Array<Char>>(strings.size) { Array<Char>(strings[0].length) { '-' } }
+    val map = Array<CharArray>(strings.size) { CharArray(strings[0].length) }
     for (i in map.indices) {
         for (j in map[0].indices) {
             map[i][j] = strings[i][j]
@@ -45,8 +45,8 @@ fun part01(part: Int = 1): Int {
 
 fun part02() = part01(part = 2)
 
-fun createCopy(original: Array<Array<Char>>): Array<Array<Char>> {
-    val copy = Array<Array<Char>>(original.size) { Array<Char>(original[0].size) { '-' } }
+fun createCopy(original: Array<CharArray>): Array<CharArray> {
+    val copy = Array<CharArray>(original.size) { CharArray(original[0].size) }
     for (i in original.indices) {
         for (j in original[0].indices) {
             copy[i][j] = original[i][j]
@@ -55,7 +55,7 @@ fun createCopy(original: Array<Array<Char>>): Array<Array<Char>> {
     return copy
 }
 
-fun adjacentOccupied(part: Int, map: Array<Array<Char>>, row: Int, col: Int): Boolean {
+fun adjacentOccupied(part: Int, map: Array<CharArray>, row: Int, col: Int): Boolean {
     val pos = arrayOf(
         arrayOf(-1, -1),
         arrayOf(-1, 0),
@@ -93,13 +93,13 @@ fun adjacentOccupied(part: Int, map: Array<Array<Char>>, row: Int, col: Int): Bo
     return false
 }
 
-fun isValid(map: Array<Array<Char>>, x: Int, y: Int): Boolean {
+fun isValid(map: Array<CharArray>, x: Int, y: Int): Boolean {
     if (x >= 0 && x < map.size && y >= 0 && y < map[0].size)
         return true
     return false
 }
 
-fun occupiedBy(howMany: Int, map: Array<Array<Char>>, row: Int, col: Int): Boolean {
+fun occupiedBy(howMany: Int, map: Array<CharArray>, row: Int, col: Int): Boolean {
     var occupied = 0
     val pos = arrayOf(
         arrayOf(-1, -1),
@@ -141,7 +141,7 @@ fun occupiedBy(howMany: Int, map: Array<Array<Char>>, row: Int, col: Int): Boole
     return occupied >= howMany
 }
 
-fun occupiedCount(map: Array<Array<Char>>): Int {
+fun occupiedCount(map: Array<CharArray>): Int {
     var occupied = 0
     for (i in map.indices) {
         for (j in map[0].indices) {
