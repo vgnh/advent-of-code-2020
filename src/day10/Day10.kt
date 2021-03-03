@@ -27,9 +27,9 @@ fun part01(): Int {
     return oneCount * threeCount
 }
 
-fun part02(_index: Int? = null, _ways: Array<Long>? = null, _adapters: List<Int>? = null): Long {
+fun part02(_index: Int? = null, _ways: LongArray? = null, _adapters: List<Int>? = null): Long {
     val adapters = _adapters ?: allAdapters()
-    val ways = _ways ?: Array<Long>(adapters.size) { 0 }
+    val ways = _ways ?: LongArray(adapters.size)
     val index = _index ?: adapters.size - 1
 
     if (index == 0)

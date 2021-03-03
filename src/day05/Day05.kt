@@ -61,12 +61,7 @@ fun main() {
 
 // Alternate solution
 /*val seatList = File(FILENAME).readLines().map {
-    it.trim()
-        .replace('F', '0')
-        .replace('B', '1')
-        .replace('L', '0')
-        .replace('R', '1')
-        .toInt(2)
+    it.trim().replace('F', '0').replace('B', '1').replace('L', '0').replace('R', '1').toInt(2)
 }.toTypedArray()
 
 fun part01() = seatList.maxOrNull()
