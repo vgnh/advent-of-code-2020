@@ -18,7 +18,7 @@ fun part01(limit: Int = 2020): Int {
         turn++
         curr = next
         next = if (prevOccurrence[curr] == 0) 0 else turn - prevOccurrence[curr] // Uncomment when using array
-        //next = if(!prevOccurrence.containsKey(curr)) 0 else turn - prevOccurrence[curr]!! // Uncomment when using map
+        //next = if (!prevOccurrence.containsKey(curr)) 0 else turn - prevOccurrence[curr]!! // Uncomment when using map
         prevOccurrence[curr] = turn
     }
 
