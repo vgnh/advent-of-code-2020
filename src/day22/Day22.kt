@@ -5,12 +5,9 @@ import java.io.File
 const val FILENAME = "src/day22/Input.txt"
 
 val input = File(FILENAME).readText().split("\n\n").map {
-    subListTillEnd(it.split("\n"), 1).map { str -> str.toInt() }.toList()
+    val list = it.split("\n")
+    list.subList(1, list.size).map { str -> str.toInt() }.toList()
 }.toTypedArray()
-
-fun <T> subListTillEnd(list: List<T>, fromIndex: Int): List<T> {
-    return list.subList(fromIndex, list.size)
-}
 
 fun part01(): Int {
     val player1 = input[0].toMutableList()
