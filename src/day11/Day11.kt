@@ -45,13 +45,10 @@ fun part01(part: Int = 1): Int {
 
 fun part02() = part01(part = 2)
 
-fun createCopy(original: Array<CharArray>): Array<CharArray> {
-    val copy = Array<CharArray>(original.size) { CharArray(original[0].size) }
-    for (i in original.indices) {
-        for (j in original[0].indices) {
-            copy[i][j] = original[i][j]
-        }
-    }
+fun createCopy(src: Array<CharArray>): Array<CharArray> {
+    val copy = Array<CharArray>(src.size) { CharArray(src[0].size) }
+    for (i in src.indices)
+        copy[i] = src[i].clone()
     return copy
 }
 
