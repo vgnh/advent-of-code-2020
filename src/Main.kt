@@ -16,6 +16,13 @@ fun main() {
     day13.main()
     day14.main()
     day15.main()
+    //
+    //
+    day18.main()
+    //
+    //
+    //
+    day22.main()
 
     println("\nTime taken: ${String.format("%.6f", (System.nanoTime()-startTime)/1_000_000_000f)} seconds")
 }
