@@ -40,8 +40,7 @@ fun part01(): Map<Pair<Int, Int>, Boolean> {
 fun part02(): Int {
     var tile = part01()
     val (xList, yList) = Pair(tile.keys.map { it.first }, tile.keys.map { it.second })
-    var (xMin, xMax) = Pair(xList.minOrNull()!!, xList.maxOrNull()!!)
-    var (yMin, yMax) = Pair(yList.minOrNull()!!, yList.maxOrNull()!!)
+    var (xMin, xMax, yMin, yMax) = arrayOf(xList.minOrNull()!!, xList.maxOrNull()!!, yList.minOrNull()!!, yList.maxOrNull()!!)
 
     for (days in 0 until 100) {
         xMin -= 1; xMax += 1; yMin -= 1; yMax += 1
