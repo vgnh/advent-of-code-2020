@@ -90,11 +90,7 @@ fun adjacentOccupied(part: Int, map: Array<CharArray>, row: Int, col: Int): Bool
     return false
 }
 
-fun isValid(map: Array<CharArray>, x: Int, y: Int): Boolean {
-    if (x >= 0 && x < map.size && y >= 0 && y < map[0].size)
-        return true
-    return false
-}
+fun isValid(map: Array<CharArray>, x: Int, y: Int) = (x >= 0 && x < map.size) && (y >= 0 && y < map[0].size)
 
 fun occupiedBy(howMany: Int, map: Array<CharArray>, row: Int, col: Int): Boolean {
     var occupied = 0
