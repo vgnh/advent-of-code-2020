@@ -62,9 +62,7 @@ fun part02(): Long {
         for (j in validTickets2D[0].indices) {
             var valid = true
             for (i in validTickets2D.indices) {
-                if (!((validTickets2D[i][j] >= r1 && validTickets2D[i][j] <= r2) ||
-                            (validTickets2D[i][j] >= r3 && validTickets2D[i][j] <= r4))
-                ) {
+                if (!(validTickets2D[i][j] in r1..r2 || validTickets2D[i][j] in r3..r4)) {
                     valid = false
                     break
                 }
