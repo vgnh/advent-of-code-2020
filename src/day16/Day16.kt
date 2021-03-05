@@ -79,9 +79,9 @@ fun part02(): Long {
 
     val colIgnoreList = mutableListOf<Int>()
     for (key in ruleArrMap.keys) {
-        val arr = ruleArrMap[key]
-        for (col in colIgnoreList) arr!![col] = false
-        if (arr!!.count { it == true } == 1) {
+        val arr = ruleArrMap[key]!!
+        for (col in colIgnoreList) arr[col] = false
+        if (arr.count { it == true } == 1) {
             val index = arr.indexOf(true)
             if (key.startsWith("departure")) departure *= myTicket[index]
             colIgnoreList.add(index)
