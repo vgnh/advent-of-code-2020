@@ -19,7 +19,7 @@ fun part01(): Int {
     for (rule in rules) {
         val reg = Regex(".*: ([0-9]*)-([0-9]*) or ([0-9]*)-([0-9]*)").find(rule)!!.groupValues
         val (r1, r2, r3, r4) = arrayOf(reg[1].toInt(), reg[2].toInt(), reg[3].toInt(), reg[4].toInt())
-        listOfRanges.add(fun(num) = (r1 <= num && num <= r2) || (r3 <= num && num <= r4))
+        listOfRanges.add(fun(num) = num in r1..r2 || num in r3..r4)
     }
 
     // Convert each string of comma separated values in nearbyTickets to an int[]
@@ -41,7 +41,7 @@ fun part02(): Long {
     for (rule in rules) {
         val reg = Regex(".*: ([0-9]*)-([0-9]*) or ([0-9]*)-([0-9]*)").find(rule)!!.groupValues
         val (r1, r2, r3, r4) = arrayOf(reg[1].toInt(), reg[2].toInt(), reg[3].toInt(), reg[4].toInt())
-        listOfRanges.add(fun(num) = (r1 <= num && num <= r2) || (r3 <= num && num <= r4))
+        listOfRanges.add(fun(num) = num in r1..r2 || num in r3..r4)
     }
     val validTicketList = nearbyTickets.map {
         it.split(",").map(Integer::parseInt).toTypedArray()
