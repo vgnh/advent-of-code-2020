@@ -6,6 +6,10 @@ const val FILENAME = "src/day17/Input.txt"
 
 val input = File(FILENAME).readLines().toTypedArray()
 
+data class Tuple4<out A, out B, out C, out D>(val first: A, val second: B, val third: C, val fourth: D)
+data class Tuple6<out A, out B, out C, out D, out E, out F>(val first: A, val second: B, val third: C, val fourth: D, val fifth: E, val sixth: F)
+data class Tuple8<out A, out B, out C, out D, out E, out F, out G, out H>(val first: A, val second: B, val third: C, val fourth: D, val fifth: E, val sixth: F, val seventh: G, val eighth: H)
+
 fun part01(): Int {
     var cube = mutableMapOf<Triple<Int, Int, Int>, Boolean>()
     var y = input.size - 1
@@ -59,10 +63,6 @@ fun state(triple: Triple<Int, Int, Int>, map: Map<Triple<Int, Int, Int>, Boolean
     }
     return if (currentState == true) (neighbours == 2 || neighbours == 3) else neighbours == 3
 }
-
-data class Tuple4<out A, out B, out C, out D>(val first: A, val second: B, val third: C, val fourth: D)
-data class Tuple6<out A, out B, out C, out D, out E, out F>(val first: A, val second: B, val third: C, val fourth: D, val fifth: E, val sixth: F)
-data class Tuple8<out A, out B, out C, out D, out E, out F, out G, out H>(val first: A, val second: B, val third: C, val fourth: D, val fifth: E, val sixth: F, val seventh: G, val eighth: H)
 
 fun part02(): Int {
     var cube = mutableMapOf<Tuple4<Int, Int, Int, Int>, Boolean>()
