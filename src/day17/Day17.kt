@@ -19,8 +19,7 @@ fun part01(): Int {
         }
         y--
     }
-    var (yMin, yMax, xMin, xMax, zMin) = arrayOf(0, input.size - 1, 0, input[0].length - 1, 0)
-    var zMax = 0
+    var (yMin, yMax, xMin, xMax, zMin, zMax) = Tuple6(0, input.size - 1, 0, input[0].length - 1, 0, 0)
 
     for (cycle in 0 until 6) {
         --yMin; ++yMax; --xMin; ++xMax; --zMin; ++zMax
@@ -62,6 +61,7 @@ fun state(triple: Triple<Int, Int, Int>, map: Map<Triple<Int, Int, Int>, Boolean
 }
 
 data class Tuple4<out A, out B, out C, out D>(val first: A, val second: B, val third: C, val fourth: D)
+data class Tuple6<out A, out B, out C, out D, out E, out F>(val first: A, val second: B, val third: C, val fourth: D, val fifth: E, val sixth: F)
 data class Tuple8<out A, out B, out C, out D, out E, out F, out G, out H>(val first: A, val second: B, val third: C, val fourth: D, val fifth: E, val sixth: F, val seventh: G, val eighth: H)
 
 fun part02(): Int {
