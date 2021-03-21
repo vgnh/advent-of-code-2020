@@ -12,7 +12,7 @@ fun part01(runPart02: Boolean = false): String {
     var currentCup = cups[0]
     val minCup = cups.minOrNull()
     if (runPart02) {
-        for (i in cups.maxOrNull()!! + 1..1000000)
+        for (i in cups.maxOrNull()!! + 1..1_000_000)
             cups.add(i)
     }
     val maxCup = cups.maxOrNull()
@@ -23,7 +23,7 @@ fun part01(runPart02: Boolean = false): String {
         next[cups[i]] = cups[i + 1]
     next[cups[cups.size - 1]] = cups[0]
 
-    val moves = if (runPart02) 10000000 else 100
+    val moves = if (runPart02) 10_000_000 else 100
     for (i in 0 until moves) {
         val threeCups = mutableListOf<Int>()
         var cupToInsert = currentCup
