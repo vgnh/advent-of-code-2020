@@ -12,7 +12,7 @@ val seatList = File(FILENAME).readLines().map { it.trim() }
 val occupiedList = BooleanArray(((127 * 8) + 7) + 1) // 0-1023, total = 1024, init to false
 
 fun part01(): Int {
-    var highestSeatID = 0
+    var highestSeatId = 0
     for (seat in seatList) {
         var lRange = 0
         var uRange = 127
@@ -34,12 +34,12 @@ fun part01(): Int {
         }
         val col = if (seat[9] == 'L') lRange else uRange
 
-        val seatID = (row * 8) + col
-        occupiedList[seatID] = true // for part02
-        if (seatID > highestSeatID)
-            highestSeatID = seatID
+        val seatId = (row * 8) + col
+        occupiedList[seatId] = true // for part02
+        if (seatId > highestSeatId)
+            highestSeatId = seatId
     }
-    return highestSeatID
+    return highestSeatId
 }
 
 fun part02(): Int {
