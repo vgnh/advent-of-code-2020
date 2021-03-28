@@ -6,9 +6,7 @@ const val FILENAME = "src/day07/Input.txt"
 
 val ruleMap = File(FILENAME).readLines().map {
     it.substring(0, it.length - 1).replace(" bags", "").replace(" bag", "")
-}.map {
-    it.split(" contain ")[0] to it.split(" contain ")[1]
-}.toMap()
+}.map { it.split(" contain ")[0] to it.split(" contain ")[1] }.toMap()
 
 fun part01(): Int {
     var bagCount = 0
