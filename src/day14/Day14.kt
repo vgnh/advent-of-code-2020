@@ -37,7 +37,7 @@ fun part02(): Long {
         if (input[i].startsWith("mem")) {
             val temp = input[i].split(" = ")
             val addr = StringBuilder(
-                Integer.toBinaryString(temp[0].substring(4, temp[0].length - 1).toInt()).padStart(36, '0')
+                    Integer.toBinaryString(temp[0].substring(4, temp[0].length - 1).toInt()).padStart(36, '0')
             )
             val num = temp[1].toLong()
 
@@ -47,6 +47,7 @@ fun part02(): Long {
             }
 
             val validList = mutableListOf<String>()
+
             // Generate valid addresses from initial masked address
             fun generateValidList(s: String) {
                 val x = s.indexOf('X')

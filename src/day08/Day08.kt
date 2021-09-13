@@ -21,11 +21,13 @@ fun part01(runningPart02: Boolean = false): Int {
                 executed[i] = true
                 i++
             }
+
             instructions[i].contains("acc") -> {
                 accumulator += instructions[i].substring(4).toInt()
                 executed[i] = true
                 i++
             }
+
             instructions[i].contains("jmp") -> {
                 val jumpTo = i + instructions[i].substring(4).toInt()
                 executed[i] = true

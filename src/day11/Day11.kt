@@ -54,14 +54,14 @@ fun createCopy(src: Array<CharArray>): Array<CharArray> {
 
 fun adjacentOccupied(part: Int, map: Array<CharArray>, row: Int, col: Int): Boolean {
     val pos = arrayOf(
-        arrayOf(-1, -1),
-        arrayOf(-1, 0),
-        arrayOf(-1, 1),
-        arrayOf(0, -1),
-        arrayOf(0, 1),
-        arrayOf(1, -1),
-        arrayOf(1, 0),
-        arrayOf(1, 1)
+            arrayOf(-1, -1),
+            arrayOf(-1, 0),
+            arrayOf(-1, 1),
+            arrayOf(0, -1),
+            arrayOf(0, 1),
+            arrayOf(1, -1),
+            arrayOf(1, 0),
+            arrayOf(1, 1)
     )
     if (part == 1) {
         for (i in pos.indices) {
@@ -95,14 +95,14 @@ fun isValid(map: Array<CharArray>, x: Int, y: Int) = (x >= 0 && x < map.size) &&
 fun occupiedBy(howMany: Int, map: Array<CharArray>, row: Int, col: Int): Boolean {
     var occupied = 0
     val pos = arrayOf(
-        arrayOf(-1, -1),
-        arrayOf(-1, 0),
-        arrayOf(-1, 1),
-        arrayOf(0, -1),
-        arrayOf(0, 1),
-        arrayOf(1, -1),
-        arrayOf(1, 0),
-        arrayOf(1, 1)
+            arrayOf(-1, -1),
+            arrayOf(-1, 0),
+            arrayOf(-1, 1),
+            arrayOf(0, -1),
+            arrayOf(0, 1),
+            arrayOf(1, -1),
+            arrayOf(1, 0),
+            arrayOf(1, 1)
     )
     if (howMany == 4) {
         // part01()

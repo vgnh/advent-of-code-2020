@@ -8,10 +8,10 @@ const val FILENAME = "src/day12/Input.txt"
 val instructions = File(FILENAME).readLines().toTypedArray()
 
 val values = mapOf<Char, Array<Int>>(
-    'N' to arrayOf(0, 1),
-    'E' to arrayOf(1, 0),
-    'S' to arrayOf(0, -1),
-    'W' to arrayOf(-1, 0)
+        'N' to arrayOf(0, 1),
+        'E' to arrayOf(1, 0),
+        'S' to arrayOf(0, -1),
+        'W' to arrayOf(-1, 0)
 )
 
 fun part01(): Int {

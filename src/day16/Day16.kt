@@ -29,9 +29,9 @@ fun part01(): Int {
     // Then errorRate <- total
     // Finally once each array in the list is exhausted, return errorRate
     return nearbyTickets.map { str -> str.split(",").map(Integer::parseInt).toTypedArray() }
-        .fold(0, { errorRate, arr ->
-            arr.filter { num -> !listOfRanges.any { fn -> fn(num) } }.fold(errorRate, { total, next -> total + next })
-        })
+            .fold(0, { errorRate, arr ->
+                arr.filter { num -> !listOfRanges.any { fn -> fn(num) } }.fold(errorRate, { total, next -> total + next })
+            })
 }
 
 fun part02(): Long {
@@ -72,7 +72,7 @@ fun part02(): Long {
         ruleArrMap[reg[0]] = colArr
     }
     ruleArrMap = ruleArrMap.toSortedMap(
-        compareBy { key -> ruleArrMap[key]!!.count { value -> value == true } }
+            compareBy { key -> ruleArrMap[key]!!.count { value -> value == true } }
     ).toMutableMap()
 
     val colIgnoreList = mutableListOf<Int>()
