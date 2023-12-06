@@ -2,13 +2,12 @@ package day07
 
 import (
 	"advent-of-code-2020/utils"
-	"fmt"
 	// "regexp"
 	"strconv"
 	"strings"
 )
 
-const filename = "./day07/input.txt"
+const filename = "./inputs/day07.txt"
 
 var ruleMap = func() map[string]string {
 	ruleMap := make(map[string]string)
@@ -44,23 +43,25 @@ func hasShinyGold(str string) bool {
 	return false
 }
 
-func part02(bagColor string) int {
-	totalBags := 0
+func totalBags(bagColor string) int {
+	total := 0
 	for _, str := range strings.Split(ruleMap[bagColor], ", ") {
 		if str != "no other" {
 			num, _ := strconv.Atoi(str[:1])
-			totalBags += num + num*part02(str[2:])
+			total += num + num*totalBags(str[2:])
 		} else {
 			break
 		}
 	}
-	return totalBags
+	return total
 }
 
-func Main() {
-	fmt.Println("Advent of Code 2020, Day 07")
-	fmt.Println(part01())
-	fmt.Println(part02("shiny gold"))
+func part02() int {
+	return totalBags("shiny gold")
+}
+
+func Main() (int, func() int, func() int) {
+	return 7, part01, part02
 }
 
 // Alternate but slower part01

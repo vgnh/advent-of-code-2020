@@ -2,10 +2,9 @@ package day25
 
 import (
 	"advent-of-code-2020/utils"
-	"fmt"
 )
 
-const filename = "./day25/input.txt"
+const filename = "./inputs/day25.txt"
 
 var input = utils.MapToInt(utils.ReadLines(filename))
 
@@ -21,7 +20,9 @@ func part01() int {
 	}
 }
 
-func Main() {
-	fmt.Println("Advent of Code 2020, Day 25")
-	fmt.Println(part01())
+func Main() (int, func() int, func() int) {
+	return 25, part01, func() int {
+		// no part02 on day25
+		return -1
+	}
 }

@@ -2,13 +2,12 @@ package day23
 
 import (
 	"advent-of-code-2020/utils"
-	"fmt"
 	"slices"
 	"strconv"
 	"strings"
 )
 
-const filename = "./day23/input.txt"
+const filename = "./inputs/day23.txt"
 
 var cups2 = func() []int {
 	runes := []rune(utils.ReadString(filename))
@@ -19,13 +18,13 @@ var cups2 = func() []int {
 	return cups
 }()
 
-func part01(runPart02 bool) string {
+func labels(part02 bool) int {
 	cups := make([]int, len(cups2))
 	copy(cups, cups2)
 
 	currentCup := cups[0]
 	minCup := slices.Min(cups)
-	if runPart02 {
+	if part02 {
 		for i := slices.Max(cups) + 1; i <= 1_000_000; i++ {
 			cups = append(cups, i)
 		}
@@ -40,7 +39,7 @@ func part01(runPart02 bool) string {
 	next[cups[len(cups)-1]] = cups[0]
 
 	moves := 100
-	if runPart02 {
+	if part02 {
 		moves = 10_000_000
 	}
 	for i := 0; i < moves; i++ {
@@ -74,27 +73,30 @@ func part01(runPart02 bool) string {
 		currentCup = next[currentCup]
 	}
 
-	if runPart02 {
-		return fmt.Sprint(next[1] * next[next[1]])
+	if part02 {
+		return next[1] * next[next[1]]
 	} else {
 		var cupOrder strings.Builder
 		tempCup := next[1]
 		for {
-			cupOrder.WriteString(fmt.Sprint(tempCup))
+			cupOrder.WriteString(strconv.Itoa(tempCup))
 			tempCup = next[tempCup]
 			if tempCup == 1 {
-				return cupOrder.String()
+				co, _ := strconv.Atoi(cupOrder.String())
+				return co
 			}
 		}
 	}
 }
 
-func part02() string {
-	return part01(true)
+func part01() int {
+	return labels(false)
 }
 
-func Main() {
-	fmt.Println("Advent of Code 2020, Day 23")
-	fmt.Println(part01(false))
-	fmt.Println(part02())
+func part02() int {
+	return labels(true)
+}
+
+func Main() (int, func() int, func() int) {
+	return 23, part01, part02
 }

@@ -31,13 +31,17 @@ import (
 func main() {
 	start := time.Now()
 
-	runInParallel := false
+	parallel := true
 
 	var wg sync.WaitGroup
-	for _, fun := range []func(){day01.Main, day02.Main, day03.Main, day04.Main, day05.Main, day06.Main, day07.Main, day08.Main, day09.Main, day10.Main, day11.Main, day12.Main, day13.Main, day14.Main, day15.Main, day16.Main, day17.Main, day18.Main, day22.Main, day23.Main, day24.Main, day25.Main} {
-		fn := fun
+	for _, f := range []func() (int, func() int, func() int){day01.Main, day02.Main, day03.Main, day04.Main, day05.Main, day06.Main, day07.Main, day08.Main, day09.Main, day10.Main, day11.Main, day12.Main, day13.Main, day14.Main, day15.Main, day16.Main, day17.Main, day18.Main, day22.Main, day23.Main, day24.Main, day25.Main} {
+		f := f
+		fn := func() {
+			i, part01, part02 := f()
+			fmt.Printf("Advent of Code 2020, Day %02d\n%v\n%v\n", i, part01(), part02())
+		}
 
-		switch runInParallel {
+		switch parallel {
 		case true:
 			wg.Add(1)
 			go func() {

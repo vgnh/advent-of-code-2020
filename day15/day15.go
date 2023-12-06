@@ -2,15 +2,14 @@ package day15
 
 import (
 	"advent-of-code-2020/utils"
-	"fmt"
 	"strings"
 )
 
-const filename = "./day15/input.txt"
+const filename = "./inputs/day15.txt"
 
 var starting = utils.MapToInt(strings.Split(utils.ReadString(filename), ","))
 
-func part01(limit int) int {
+func numberSpoken(limit int) int {
 	prevOccurrence := make([]int, limit)
 	// prevOccurrence := make(map[int]int)
 	turn := 0
@@ -39,12 +38,14 @@ func part01(limit int) int {
 	return curr
 }
 
-func part02() int {
-	return part01(30_000_000)
+func part01() int {
+	return numberSpoken(2020)
 }
 
-func Main() {
-	fmt.Println("Advent of Code 2020, Day 15")
-	fmt.Println(part01(2020))
-	fmt.Println(part02())
+func part02() int {
+	return numberSpoken(30_000_000)
+}
+
+func Main() (int, func() int, func() int) {
+	return 15, part01, part02
 }

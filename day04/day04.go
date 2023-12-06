@@ -2,12 +2,11 @@ package day04
 
 import (
 	"advent-of-code-2020/utils"
-	"fmt"
 	"regexp"
 	"strings"
 )
 
-const filename = "./day04/input.txt"
+const filename = "./inputs/day04.txt"
 
 var passportList = func() []string {
 	passportList := strings.Split(utils.ReadString(filename), "\n\n")
@@ -60,8 +59,6 @@ func part02() int {
 	return validPass
 }
 
-func Main() {
-	fmt.Println("Advent of Code 2020, Day 04")
-	fmt.Println(part01())
-	fmt.Println(part02())
+func Main() (int, func() int, func() int) {
+	return 4, part01, part02
 }

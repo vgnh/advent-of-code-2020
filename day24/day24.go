@@ -2,11 +2,10 @@ package day24
 
 import (
 	"advent-of-code-2020/utils"
-	"fmt"
 	"slices"
 )
 
-const filename = "./day24/input.txt"
+const filename = "./inputs/day24.txt"
 
 var directions = utils.ReadLines(filename)
 
@@ -14,7 +13,9 @@ type pair struct {
 	first, second int
 }
 
-func part01() map[pair]bool {
+var tilePart02 = make(chan map[pair]bool, 1)
+
+func part01() int {
 	tile := make(map[pair]bool)
 	tile[pair{0, 0}] = true
 
@@ -57,12 +58,12 @@ func part01() map[pair]bool {
 			count++
 		}
 	}
-	fmt.Println(count)
-	return tile
+	tilePart02 <- tile
+	return count
 }
 
 func part02() int {
-	tile := part01()
+	tile := <-tilePart02
 	xList, yList := make([]int, len(tile)), make([]int, len(tile))
 	l := 0
 	for key := range tile {
@@ -130,7 +131,6 @@ func state(p *pair, tile *map[pair]bool) bool {
 	}
 }
 
-func Main() {
-	fmt.Println("Advent of Code 2020, Day 24")
-	fmt.Println(part02()) // Calls part01()
+func Main() (int, func() int, func() int) {
+	return 24, part01, part02
 }

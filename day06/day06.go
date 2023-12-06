@@ -2,11 +2,10 @@ package day06
 
 import (
 	"advent-of-code-2020/utils"
-	"fmt"
 	"strings"
 )
 
-const filename = "./day06/input.txt"
+const filename = "./inputs/day06.txt"
 
 var groupList = func() []string {
 	groupList := strings.Split(utils.ReadString(filename), "\n\n")
@@ -45,8 +44,6 @@ func part02() int {
 	return totalYesCount
 }
 
-func Main() {
-	fmt.Println("Advent of Code 2020, Day 06")
-	fmt.Println(part01())
-	fmt.Println(part02())
+func Main() (int, func() int, func() int) {
+	return 6, part01, part02
 }

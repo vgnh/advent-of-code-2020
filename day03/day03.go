@@ -2,10 +2,9 @@ package day03
 
 import (
 	"advent-of-code-2020/utils"
-	"fmt"
 )
 
-const filename = "./day03/input.txt"
+const filename = "./inputs/day03.txt"
 
 var terrain = func() [][]rune {
 	input := utils.ReadLines(filename)
@@ -41,8 +40,6 @@ func part02() int {
 	return treeCount(1, 1) * treeCount(3, 1) * treeCount(5, 1) * treeCount(7, 1) * treeCount(1, 2)
 }
 
-func Main() {
-	fmt.Println("Advent of Code 2020, Day 03")
-	fmt.Println(part01())
-	fmt.Println(part02())
+func Main() (int, func() int, func() int) {
+	return 3, part01, part02
 }

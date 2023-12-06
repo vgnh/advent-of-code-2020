@@ -2,12 +2,11 @@ package day02
 
 import (
 	"advent-of-code-2020/utils"
-	"fmt"
 	"strconv"
 	"strings"
 )
 
-const filename = "./day02/input.txt"
+const filename = "./inputs/day02.txt"
 
 var passwordPolicies = utils.ReadLines(filename)
 
@@ -55,8 +54,6 @@ func part02() int {
 	return validCount
 }
 
-func Main() {
-	fmt.Println("Advent of Code 2020, Day 02")
-	fmt.Println(part01())
-	fmt.Println(part02())
+func Main() (int, func() int, func() int) {
+	return 2, part01, part02
 }

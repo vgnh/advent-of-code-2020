@@ -2,10 +2,9 @@ package day11
 
 import (
 	"advent-of-code-2020/utils"
-	"fmt"
 )
 
-const filename = "./day11/input.txt"
+const filename = "./inputs/day11.txt"
 
 var layout = func() [][]rune {
 	strs := utils.ReadLines(filename)
@@ -20,7 +19,7 @@ var layout = func() [][]rune {
 	return layout
 }()
 
-func part01(part int) int {
+func howManyOccupied(part int) int {
 	layout := utils.Copy2d(layout)
 	rows := len(layout)
 	cols := len(layout[0])
@@ -55,8 +54,12 @@ func part01(part int) int {
 	return occupiedCount(layout2)
 }
 
+func part01() int {
+	return howManyOccupied(1)
+}
+
 func part02() int {
-	return part01(2)
+	return howManyOccupied(2)
 }
 
 func adjacentOccupied(part int, layout [][]rune, row int, col int) bool {
@@ -144,8 +147,6 @@ func occupiedCount(layout [][]rune) int {
 	return occupied
 }
 
-func Main() {
-	fmt.Println("Advent of Code 2020, Day 11")
-	fmt.Println(part01(1))
-	fmt.Println(part02())
+func Main() (int, func() int, func() int) {
+	return 11, part01, part02
 }

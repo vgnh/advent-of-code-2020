@@ -2,10 +2,9 @@ package day17
 
 import (
 	"advent-of-code-2020/utils"
-	"fmt"
 )
 
-const filename = "./day17/input.txt"
+const filename = "./inputs/day17.txt"
 
 var input = utils.ReadLines(filename)
 
@@ -161,8 +160,6 @@ func state2(t tuple, m map[tuple]bool) bool {
 	return neighbours == 3
 }
 
-func Main() {
-	fmt.Println("Advent of Code 2020, Day 17")
-	fmt.Println(part01())
-	fmt.Println(part02())
+func Main() (int, func() int, func() int) {
+	return 17, part01, part02
 }

@@ -2,11 +2,10 @@ package day22
 
 import (
 	"advent-of-code-2020/utils"
-	"fmt"
 	"strings"
 )
 
-const filename = "./day22/input.txt"
+const filename = "./inputs/day22.txt"
 
 var input = func() [][]int {
 	strs := strings.Split(utils.ReadString(filename), "\n\n")
@@ -105,8 +104,6 @@ func recursiveCombat(deck1, deck2 *[]int) bool {
 	return len(*deck1) > 0
 }
 
-func Main() {
-	fmt.Println("Advent of Code 2020, Day 22")
-	fmt.Println(part01())
-	fmt.Println(part02())
+func Main() (int, func() int, func() int) {
+	return 22, part01, part02
 }

@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-const filename = "./day14/input.txt"
+const filename = "./inputs/day14.txt"
 
 var input = utils.ReadLines(filename)
 
@@ -101,8 +101,6 @@ func part02() int {
 	return utils.Sum(utils.MapValues(mem))
 }
 
-func Main() {
-	fmt.Println("Advent of Code 2020, Day 14")
-	fmt.Println(part01())
-	fmt.Println(part02())
+func Main() (int, func() int, func() int) {
+	return 14, part01, part02
 }

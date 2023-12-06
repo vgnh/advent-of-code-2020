@@ -2,14 +2,13 @@ package day05
 
 import (
 	"advent-of-code-2020/utils"
-	"fmt"
 	"math"
 	// "sort"
 	// "strconv"
 	// "strings"
 )
 
-const filename = "./day05/input.txt"
+const filename = "./inputs/day05.txt"
 
 var seatList = utils.ReadLines(filename)
 
@@ -68,10 +67,8 @@ func part02() int {
 	return -1
 }
 
-func Main() {
-	fmt.Println("Advent of Code 2020, Day 05")
-	fmt.Println(part01())
-	fmt.Println(part02())
+func Main() (int, func() int, func() int) {
+	return 5, part01, part02
 }
 
 // Alternate solution

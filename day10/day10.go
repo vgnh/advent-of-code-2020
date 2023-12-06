@@ -2,12 +2,11 @@ package day10
 
 import (
 	"advent-of-code-2020/utils"
-	"fmt"
 	"slices"
 	"sort"
 )
 
-const filename = "./day10/input.txt"
+const filename = "./inputs/day10.txt"
 
 var allAdapters = func() []int {
 	adapters := utils.MapToInt(utils.ReadLines(filename))
@@ -30,7 +29,7 @@ func part01() int {
 	return oneCount * threeCount
 }
 
-func part02(_index int, _ways []int, _adapters []int) int {
+func distinctWays(_index int, _ways []int, _adapters []int) int {
 	index, ways, adapters := _index, _ways, _adapters
 	if adapters == nil {
 		adapters = allAdapters
@@ -52,7 +51,7 @@ func part02(_index int, _ways []int, _adapters []int) int {
 	ways[index] = 0
 	for j := index - 1; j >= 0; j-- {
 		if adapters[index]-adapters[j] <= 3 {
-			ways[index] += part02(j, ways, adapters)
+			ways[index] += distinctWays(j, ways, adapters)
 		} else {
 			break
 		}
@@ -60,10 +59,12 @@ func part02(_index int, _ways []int, _adapters []int) int {
 	return ways[index]
 }
 
-func Main() {
-	fmt.Println("Advent of Code 2020, Day 10")
-	fmt.Println(part01())
-	fmt.Println(part02(-1, nil, nil))
+func part02() int {
+	return distinctWays(-1, nil, nil)
+}
+
+func Main() (int, func() int, func() int) {
+	return 10, part01, part02
 }
 
 // Alternate shorter, cleaner and non-recursive solution for part02()

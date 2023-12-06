@@ -2,12 +2,11 @@ package day12
 
 import (
 	"advent-of-code-2020/utils"
-	"fmt"
 	"math"
 	"strconv"
 )
 
-const filename = "./day12/input.txt"
+const filename = "./inputs/day12.txt"
 
 var instructions = utils.ReadLines(filename)
 
@@ -87,8 +86,6 @@ func part02() int {
 	return int(math.Abs(float64(x)) + math.Abs(float64(y)))
 }
 
-func Main() {
-	fmt.Println("Advent of Code 2020, Day 12")
-	fmt.Println(part01())
-	fmt.Println(part02())
+func Main() (int, func() int, func() int) {
+	return 12, part01, part02
 }

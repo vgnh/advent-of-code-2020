@@ -2,13 +2,14 @@ package day09
 
 import (
 	"advent-of-code-2020/utils"
-	"fmt"
 	"slices"
 )
 
-const filename = "./day09/input.txt"
+const filename = "./inputs/day09.txt"
 
 var xmas = utils.MapToInt(utils.ReadLines(filename))
+
+var invalid = make(chan int, 1)
 
 func part01() int {
 	preambleSize := 25
@@ -28,15 +29,16 @@ func part01() int {
 			}
 		}
 		if !exists {
-			fmt.Println(n)
+			invalid <- n
 			return n
 		}
 	}
+	invalid <- -1
 	return -1
 }
 
 func part02() int {
-	invalid := part01()
+	invalid := <-invalid
 	for i := 2; i <= len(xmas); i++ {
 		for j := 0; j <= len(xmas)-i; j++ {
 			contiguous := xmas[j:(j + i)]
@@ -48,7 +50,6 @@ func part02() int {
 	return -1
 }
 
-func Main() {
-	fmt.Println("Advent of Code 2020, Day 09")
-	fmt.Println(part02()) // Calls part01() as well
+func Main() (int, func() int, func() int) {
+	return 9, part01, part02
 }

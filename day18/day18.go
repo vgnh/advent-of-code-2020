@@ -2,13 +2,12 @@ package day18
 
 import (
 	"advent-of-code-2020/utils"
-	"fmt"
 	"slices"
 	"strconv"
 	"strings"
 )
 
-const filename = "./day18/input.txt"
+const filename = "./inputs/day18.txt"
 
 var input = func() []string {
 	input := utils.ReadLines(filename)
@@ -128,8 +127,6 @@ func part02() int {
 	return sum
 }
 
-func Main() {
-	fmt.Println("Advent of Code 2020, Day 18")
-	fmt.Println(part01())
-	fmt.Println(part02())
+func Main() (int, func() int, func() int) {
+	return 18, part01, part02
 }
